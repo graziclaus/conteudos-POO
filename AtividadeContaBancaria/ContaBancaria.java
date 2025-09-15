@@ -182,25 +182,41 @@ public class ContaBancaria {
 
     }
 
-    public void depositarContaBancaria(ArrayList<ContaBancaria> contas){
+    public void depositarContaBancaria(ArrayList<ContaBancaria> contas) {
 
-        System.out.println("Você está na área de depositar! Digite o número da conta para depositar: ");
-        int numeroContaBusca = scanner.nextInt();
-        scanner.nextLine();
+        ContaBancaria contaBancaria = null;
 
-        ContaBancaria contaBancaria = buscarConta(contas, numeroContaBusca);
+        while (contaBancaria == null) {
 
-        System.out.println("Você está na área de depositar! Insira o valor a ser depositado na conta: ");
+            System.out.println("Digite o número da conta para depositar: ");
+            int numeroContaBusca = scanner.nextInt();
+            scanner.nextLine();
+
+            contaBancaria = buscarConta(contas, numeroContaBusca);
+
+            if (contaBancaria == null) {
+
+                System.out.println("Conta não encontrada! Tente novamente.");
+
+            }
+        }
+
+        System.out.println("Digite o valor a depositar: ");
         double valorDepositar = scanner.nextDouble();
         scanner.nextLine();
 
-        if (valorDepositar > 0){
+        while (valorDepositar <= 0) {
 
-            contaBancaria.setSaldo(contaBancaria.getSaldo() + valorDepositar);
-            System.out.println("Deposito feito com sucesso! Seu saldo atual: " + contaBancaria.saldo);
-            contaBancaria.depositos.add("Depósito: " + valorDepositar);
+            System.out.println("Valor inválido. Tente novamente: ");
+            valorDepositar = scanner.nextDouble();
+            scanner.nextLine();
 
         }
+
+        contaBancaria.setSaldo(contaBancaria.getSaldo() + valorDepositar);
+        contaBancaria.depositos.add("Depósito: " + valorDepositar);
+        System.out.println("Depósito feito com sucesso! Saldo atual: " + contaBancaria.getSaldo());
+
     }
 
     public void criarExtratoContaBancaria(){
@@ -239,7 +255,7 @@ public class ContaBancaria {
 
         } else {
 
-            System.out.println(VERDE + "Todos os saques realizados por " + RESET +  ITALICO + AZUL + this.titular + RESET);
+            System.out.println(VERDE + "Todos os depósitos realizados por " + RESET +  ITALICO + AZUL + this.titular + RESET);
             for(String d : depositos){
 
                 System.out.println(d);
@@ -247,44 +263,48 @@ public class ContaBancaria {
             }
         }
 
-        System.out.println(VERDE + "Todos os depósitos realizados por " + RESET +  ITALICO + AZUL + this.titular + RESET);
-        System.out.println("\n");
-        System.out.println(depositos);
         System.out.println("╚════════════════════════════════════╝");
 
     }
 
-    public void alterarInformacoesCadastraisContaBancaria(){
+    public void alterarInformacoesCadastraisContaBancaria(ArrayList<ContaBancaria> contas){
 
-        System.out.println(
-                "Estamos na alteração dos dados cadastrais da conta bancária do cliente. " +
-                "Por favor, insira os dados que estão sendo pedidos abaixo: \n");
+        ContaBancaria contaBancaria = null;
 
-        System.out.println("Saldo atual da conta: " + this.getSaldo());
+        while (contaBancaria == null) {
+
+            System.out.println("Digite o número da conta para alterar os dados: ");
+            int numeroContaBusca = scanner.nextInt();
+            scanner.nextLine();
+
+            contaBancaria = buscarConta(contas, numeroContaBusca);
+
+            if (contaBancaria == null) {
+
+                System.out.println("Conta não encontrada! Tente novamente.");
+
+            }
+        }
+
+        System.out.println("Saldo atual da conta: " + contaBancaria.getSaldo());
         double novoSaldo = scanner.nextDouble();
         scanner.nextLine();
-        this.setSaldo(novoSaldo);
+        contaBancaria.setSaldo(novoSaldo);
 
-        System.out.println("\n");
-
-        System.out.println("Novo tipo de conta (Corrente, universitária, poupança etc");
+        System.out.println("\nNovo tipo de conta (Corrente, universitária, poupança etc): ");
         String novoTipoConta = scanner.nextLine();
-        this.setTipoConta(novoTipoConta);
+        contaBancaria.setTipoConta(novoTipoConta);
 
-        System.out.println("\n");
-
-        System.out.println("Novo limite da conta: ");
+        System.out.println("\nNovo limite da conta: ");
         double novoLimite = scanner.nextDouble();
         scanner.nextLine();
-        this.setLimite(novoLimite);
+        contaBancaria.setLimite(novoLimite);
 
-        System.out.println("\n");
-
-        System.out.println("Nova senha da conta: ");
+        System.out.println("\nNova senha da conta: ");
         String novaSenha = scanner.nextLine();
-        this.setSenha(novaSenha);
+        contaBancaria.setSenha(novaSenha);
 
-        System.out.println("Conta cadastrada com sucesso!\n");
+        System.out.println("Dados da conta alterados com sucesso!\n");
 
     }
 

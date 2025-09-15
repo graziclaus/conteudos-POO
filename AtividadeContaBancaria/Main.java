@@ -29,12 +29,12 @@ public class Main {
             System.out.println(LARANJA + "Olá! Nosso sistema gerência as contas bancárias dos clientes. O que você deseja fazer hoje?" + "\n" + RESET);
             System.out.println("———————————————————————————————————————— || ————————————————————————————————————————");
             System.out.println(NEGRITO + "Opções:" + RESET);
-            System.out.println("1. Cadastrar\n");
-            System.out.println("2. Sacar\n");
-            System.out.println("3. Depositar\n");
-            System.out.println("4. Extrato\n");
-            System.out.println("5. Alterar Informações Cadastrais\n");
-            System.out.println("6. Listar clientes por gerentes\n");
+            System.out.println("1. Cadastrar;\n");
+            System.out.println("2. Sacar;\n");
+            System.out.println("3. Depositar;\n");
+            System.out.println("4. Extrato;\n");
+            System.out.println("5. Alterar Informações Cadastrais;\n");
+            System.out.println("6. Listar clientes por gerentes;\n");
             System.out.println("7. Sair.\n");
             System.out.println("———————————————————————————————————————— || ————————————————————————————————————————");
 
@@ -56,6 +56,7 @@ public class Main {
                     int numeroAleatorio = random.nextInt(gerentes.size());
                     Gerente gerenteSorteado = gerentes.get(numeroAleatorio);
                     cliente.setGerente(gerenteSorteado);
+                    gerenteSorteado.adicionarClientes(cliente);
 
                     conta.setCliente(cliente);
                     contas.add(conta);
@@ -100,7 +101,7 @@ public class Main {
 
                 case 5:
 
-                    conta.alterarInformacoesCadastraisContaBancaria();
+                    conta.alterarInformacoesCadastraisContaBancaria(contas);
                     break;
 
                 case 6:
@@ -140,7 +141,7 @@ public class Main {
 
                 case 7:
 
-                    System.out.println(ITALICO + "Encerrando o sistema..." + RESET + "Até logo!");
+                    System.out.println(ITALICO + AZUL + "Encerrando o sistema... " + RESET + "Até logo!");
                     break;
 
                 default:
