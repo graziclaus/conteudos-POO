@@ -12,6 +12,7 @@ public class ContaBancaria {
     public static final String AZUL = "\u001B[34m";
     public static final String NEGRITO = "\u001B[1m";
     public static final String ITALICO = "\u001B[3m";
+    String LARANJA = "\u001B[38;5;208m";
 
     private int numeroConta;
     private String agencia;
@@ -62,7 +63,7 @@ public class ContaBancaria {
 
             } else {
 
-                System.out.println("Cliente não encontrado. Escolha uma opção:");
+                System.out.println(LARANJA + "Cliente não encontrado. Escolha uma opção:" + RESET);
                 System.out.println("1 - Criar novo cliente");
                 System.out.println("2 - Tentar outro nome");
                 int opcao = scanner.nextInt();
@@ -86,7 +87,7 @@ public class ContaBancaria {
 
                     default:
 
-                        System.out.println("Opção inválida, tente novamente.");
+                        System.out.println(LARANJA + "Opção inválida, tente novamente." + RESET);
                         break;
 
                 }
@@ -159,7 +160,7 @@ public class ContaBancaria {
 
             if (contaBancaria == null) {
 
-                System.out.println("Conta não encontrada! Tente novamente.");
+                System.out.println(LARANJA + "Conta não encontrada! Tente novamente." + RESET);
 
             }
         }
@@ -170,7 +171,7 @@ public class ContaBancaria {
 
         while (valorSacar <= 0 || valorSacar > contaBancaria.getSaldo()) {
 
-            System.out.println("Valor inválido ou saldo insuficiente. Tente novamente: ");
+            System.out.println(LARANJA + "Valor inválido ou saldo insuficiente. Tente novamente: " + RESET);
             valorSacar = scanner.nextDouble();
             scanner.nextLine();
 
@@ -196,7 +197,7 @@ public class ContaBancaria {
 
             if (contaBancaria == null) {
 
-                System.out.println("Conta não encontrada! Tente novamente.");
+                System.out.println(LARANJA + "Conta não encontrada! Tente novamente." + RESET);
 
             }
         }
@@ -207,7 +208,7 @@ public class ContaBancaria {
 
         while (valorDepositar <= 0) {
 
-            System.out.println("Valor inválido. Tente novamente: ");
+            System.out.println(LARANJA + "Valor inválido. Tente novamente: " + RESET);
             valorDepositar = scanner.nextDouble();
             scanner.nextLine();
 
@@ -237,7 +238,7 @@ public class ContaBancaria {
 
         if(saques.isEmpty()){
 
-            System.out.println("Este cliente não realizou nenhum saque na conta.");
+            System.out.println(LARANJA + "Este cliente não realizou nenhum saque na conta." + RESET);
 
         } else {
 
@@ -251,7 +252,7 @@ public class ContaBancaria {
 
         if (depositos.isEmpty()){
 
-            System.out.println("Este cliente não realizou nenhum depósito na conta.");
+            System.out.println(LARANJA + "Este cliente não realizou nenhum depósito na conta." + RESET);
 
         } else {
 
@@ -281,7 +282,7 @@ public class ContaBancaria {
 
             if (contaBancaria == null) {
 
-                System.out.println("Conta não encontrada! Tente novamente.");
+                System.out.println(LARANJA + "Conta não encontrada! Tente novamente." + RESET);
 
             }
         }

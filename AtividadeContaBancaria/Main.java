@@ -38,7 +38,7 @@ public class Main {
             System.out.println("7. Sair.\n");
             System.out.println("———————————————————————————————————————— || ————————————————————————————————————————");
 
-            System.out.println(ITALICO + "Sistema está aguardando por uma resposta... " + RESET + "➦");
+            System.out.println(ITALICO + AZUL + "Sistema está aguardando por uma resposta... " + RESET + "➦");
             opcao = scanner.nextInt();
             scanner.nextLine();
 
@@ -134,7 +134,7 @@ public class Main {
 
                     } else {
 
-                        System.out.println("Parece que o gerente não existe ou foi digitado errado.");
+                        System.out.println(LARANJA + "Parece que o gerente não existe ou foi digitado errado." + RESET);
 
                     }
                     break;
@@ -146,7 +146,7 @@ public class Main {
 
                 default:
 
-                    System.out.println("Opção inválida! Tente novamente.");
+                    System.out.println(LARANJA + "Opção inválida! Tente novamente." + RESET);
                     break;
 
             }

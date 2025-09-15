@@ -12,6 +12,9 @@ public class Gerente {
     private String agencia;
     private ArrayList<Cliente> clientes = new ArrayList<>();
 
+    public static final String RESET = "\u001B[0m";
+    String LARANJA = "\u001B[38;5;208m";
+
     public Gerente(String nome, String cpf, String telefone, double salario, String email, String agencia){
 
         this.nome = nome;
@@ -43,7 +46,7 @@ public class Gerente {
 
         if (clientes.isEmpty()) {
 
-            System.out.println("Este gerente não tem nenhum cliente cadastrado ainda.");
+            System.out.println(LARANJA + "Este gerente não tem nenhum cliente cadastrado ainda." + RESET);
 
         } else {
 
